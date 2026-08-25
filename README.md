@@ -2,8 +2,6 @@
 
 A modern, responsive, and student-focused internship landing page developed for **ForgeYantra** as a technical internship assignment.
 
-> **AI-Assisted Development:** This project was developed with assistance from **Antigravity AI** for UI implementation, debugging, and project structuring.
-
 ## 🌐 Live Demo
 
 **Live Website:** `YOUR_VERCEL_URL_HERE`
