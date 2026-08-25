@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ForgeYantra helps students gain practical industry experience through hands-on internships, real-world projects, and mentorship.">
+  <meta name="keywords" content="ForgeYantra, internship, student internships, web development, full stack, UI UX, graphic design, marketing, video editing">
+  <meta name="author" content="ForgeYantra">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ForgeYantra | Student Internship Program">
+  <meta property="og:description" content="Build Skills. Gain Experience. Launch Your Career with ForgeYantra hands-on internships.">
+  <meta property="og:image" content="assets/favicon.svg">
+
+  <title>ForgeYantra | Student Internship Program</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans for Modern Tech Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation Bar -->
+  <header class="site-header" id="navbar">
+    <div class="container header-container">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" aria-label="ForgeYantra Home">
+        <span class="logo-icon-wrapper">
+          <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="10" fill="currentColor" class="logo-bg" />
+            <path d="M10 10H30L26 16H16V20H27L23 26H16V30H10V10Z" fill="url(#logoGrad)" />
+            <circle cx="28" cy="28" r="3" fill="#38BDF8" />
+            <defs>
+              <linearGradient id="logoGrad" x1="10" y1="10" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#38BDF8"/>
+                <stop offset="1" stop-color="#6366F1"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="logo-text">Forge<span class="text-gradient">Yantra</span></span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-desktop" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#roles" class="nav-link">Internship Roles</a></li>
+          <li><a href="#why-join" class="nav-link">Why Join Us</a></li>
+          <li><a href="#process" class="nav-link">Process</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Controls (Theme Toggle & CTA) -->
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle light or dark theme" title="Toggle theme">
+          <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Apply CTA button -->
+        <a href="#contact" class="btn btn-primary nav-cta">Apply Now</a>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileDrawer">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"></span>
+          <span class="hamburger-line line-3"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-content">
+      <nav class="mobile-nav" aria-label="Mobile Navigation">
+        <ul class="mobile-nav-list">
+          <li><a href="#home" class="mobile-nav-link">Home</a></li>
+          <li><a href="#about" class="mobile-nav-link">About</a></li>
+          <li><a href="#roles" class="mobile-nav-link">Internship Roles</a></li>
+          <li><a href="#why-join" class="mobile-nav-link">Why Join Us</a></li>
+          <li><a href="#process" class="mobile-nav-link">Process</a></li>
+          <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-drawer-footer">
+        <a href="#contact" class="btn btn-primary btn-full mobile-cta">Apply Now</a>
+      </div>
+    </div>
+    <div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+  </div>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <!-- Background Ambient Glow -->
+      <div class="hero-ambient-glow" aria-hidden="true">
+        <div class="glow-orb glow-orb-1"></div>
+        <div class="glow-orb glow-orb-2"></div>
+      </div>
+
+      <div class="container hero-container">
+        <!-- Hero Text Content -->
+        <div class="hero-content reveal-item">
+          <div class="badge-pill">
+            <span class="badge-dot"></span>
+            <span class="badge-text">Cohort Applications Now Open</span>
+          </div>
+          
+          <h1 class="hero-title">
+            Build Skills. <br>
+            Gain Experience. <br>
+            <span class="text-gradient">Launch Your Career.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            ForgeYantra helps students gain practical industry experience through hands-on internships, real-world projects, and mentorship.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-actions">
+            <a href="#roles" class="btn btn-secondary">
+              <span>Explore Internships</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-primary">
+              <span>Apply Now</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Quick Feature Highlights -->
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span>Hands-on Project Work</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span>Mentor-Led Guidance</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span>Industry Workflows</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span>Portfolio Building</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Technology Visual -->
+        <div class="hero-visual reveal-item delay-1">
+          <div class="tech-card-wrapper">
+            <!-- Simulated IDE / Tech Interface Card -->
+            <div class="tech-window">
+              <div class="tech-window-header">
+                <div class="window-controls">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <div class="window-tab">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                  <span>ForgeYantraApp.jsx</span>
+                </div>
+                <div class="window-badge">v2.6 • Active Cohort</div>
+              </div>
+
+              <div class="tech-window-body">
+                <div class="code-lines">
+                  <p class="code-line"><span class="code-keyword">import</span> { <span class="code-variable">Internship</span> } <span class="code-keyword">from</span> <span class="code-string">'@forgeyantra/core'</span>;</p>
+                  <p class="code-line"><br></p>
+                  <p class="code-line"><span class="code-keyword">const</span> <span class="code-function">StudentJourney</span> = () =&gt; {</p>
+                  <p class="code-line indent-1"><span class="code-keyword">const</span> [skills, setSkills] = <span class="code-function">usePracticalLearning</span>();</p>
+                  <p class="code-line indent-1"><span class="code-keyword">const</span> mentor = <span class="code-function">useIndustryMentorship</span>();</p>
+                  <p class="code-line"><br></p>
+                  <p class="code-line indent-1"><span class="code-keyword">return</span> (</p>
+                  <p class="code-line indent-2">&lt;<span class="code-component">InternshipPlatform</span></p>
+                  <p class="code-line indent-3"><span class="code-prop">focus</span>=<span class="code-string">"Real-World Execution"</span></p>
+                  <p class="code-line indent-3"><span class="code-prop">deliverables</span>={<span class="code-variable">productionReadyProjects</span>}</p>
+                  <p class="code-line indent-3"><span class="code-prop">status</span>=<span class="code-string">"Career Ready"</span></p>
+                  <p class="code-line indent-2">/&gt;</p>
+                  <p class="code-line indent-1">);</p>
+                  <p class="code-line">};</p>
+                </div>
+
+                <!-- Live Status Banner Inside Window -->
+                <div class="tech-status-box">
+                  <div class="status-indicator">
+                    <span class="status-pulse"></span>
+                    <span>Ready for Assignment</span>
+                  </div>
+                  <span class="status-tag">6 Domains Active</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Tech Skill Badges -->
+            <div class="floating-badge badge-top-right">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              <span>Full Stack & Web</span>
+            </div>
+            <div class="floating-badge badge-bottom-left">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span>UI/UX & Design</span>
+            </div>
+            <div class="floating-badge badge-bottom-right">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span>Industry Verified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About ForgeYantra Section -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header text-center reveal-item">
+          <span class="section-tag">About ForgeYantra</span>
+          <h2 class="section-title">Bridging Theory With <span class="text-gradient">Real-World Industry Practice</span></h2>
+          <p class="section-subtitle">
+            ForgeYantra is a student-focused internship platform designed to help emerging talent transition from academic foundations into capable, industry-ready professionals.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- About Description & Mission Column -->
+          <div class="about-info-col reveal-item">
+            <div class="about-card primary-about-card">
+              <div class="card-icon-bubble">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+              </div>
+              <h3 class="about-card-title">Our Mission</h3>
+              <p class="about-card-text">
+                Our mission is to empower students with accessible, structured, and hands-on internship opportunities. We believe true technical fluency comes from building meaningful applications, solving tangible constraints, and receiving guided feedback.
+              </p>
+            </div>
+
+            <div class="about-highlights-list">
+              <div class="about-feature">
+                <div class="feature-icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="feature-title">Student-Centric Approach</h4>
+                  <p class="feature-desc">Curriculum and task challenges structured to accommodate academic schedules while maintaining high engineering standards.</p>
+                </div>
+              </div>
+
+              <div class="about-feature">
+                <div class="feature-icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="feature-title">Collaborative Learning</h4>
+                  <p class="feature-desc">Engage in task reviews and collaborative problem-solving that simulates modern cross-functional team environments.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Core Pillars Grid -->
+          <div class="about-pillars-col reveal-item delay-1">
+            <div class="pillars-grid">
+              <div class="pillar-card">
+                <div class="pillar-num">01</div>
+                <h4 class="pillar-title">Practical Learning</h4>
+                <p class="pillar-desc">Translate programming syntax and design concepts into functioning software, responsive layouts, and production assets.</p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-num">02</div>
+                <h4 class="pillar-title">Industry Exposure</h4>
+                <p class="pillar-desc">Work with standard toolchains including version control, responsive principles, clean architectures, and modern guidelines.</p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-num">03</div>
+                <h4 class="pillar-title">Mentorship & Feedback</h4>
+                <p class="pillar-desc">Receive clear, constructive critiques on your submissions to refine your code quality, design precision, and execution speed.</p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-num">04</div>
+                <h4 class="pillar-title">Career Development</h4>
+                <p class="pillar-desc">Graduate from your internship with verifiable project deliverables, demonstrable artifacts, and career readiness.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Internship Roles Section -->
+    <section class="section roles-section" id="roles">
+      <div class="container">
+        <div class="section-header text-center reveal-item">
+          <span class="section-tag">Internship Opportunities</span>
+          <h2 class="section-title">Open <span class="text-gradient">Internship Roles</span></h2>
+          <p class="section-subtitle">
+            Explore our diverse internship tracks. Each role offers structured tasks, hands-on challenges, and mentor support.
+          </p>
+
+          <!-- Domain Filter Tabs -->
+          <div class="filter-tabs" role="tablist" aria-label="Role Filters">
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Domains</button>
+            <button class="filter-btn" data-filter="engineering" role="tab" aria-selected="false">Engineering</button>
+            <button class="filter-btn" data-filter="design" role="tab" aria-selected="false">Design & UI/UX</button>
+            <button class="filter-btn" data-filter="growth" role="tab" aria-selected="false">Growth & Media</button>
+          </div>
+        </div>
+
+        <div class="roles-grid">
+          <!-- Role 1: Full Stack Development -->
+          <div class="role-card reveal-item" data-category="engineering" data-role-id="fullstack">
+            <div class="role-card-header">
+              <div class="role-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                </svg>
+              </div>
+              <span class="role-badge">Engineering</span>
+            </div>
+            <h3 class="role-title">Full Stack Development</h3>
+            <p class="role-desc">
+              Build robust end-to-end web applications combining dynamic frontends, RESTful APIs, and database schemas for modern web systems.
+            </p>
+            <div class="role-skills">
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">SQL / NoSQL</span>
+              <span class="skill-tag">Git</span>
+            </div>
+            <div class="role-footer">
+              <button class="btn btn-outline btn-full apply-role-trigger" data-role="Full Stack Development">
+                <span>Apply for this Role</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Role 2: Web Development -->
+          <div class="role-card reveal-item" data-category="engineering" data-role-id="webdev">
+            <div class="role-card-header">
+              <div class="role-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="3" y1="9" x2="21" y2="9"></line>
+                  <line x1="9" y1="21" x2="9" y2="9"></line>
+                </svg>
+              </div>
+              <span class="role-badge">Engineering</span>
+            </div>
+            <h3 class="role-title">Web Development</h3>
+            <p class="role-desc">
+              Craft responsive, accessible, and high-performance user interfaces with modern HTML5, CSS3, JavaScript, and modern design principles.
+            </p>
+            <div class="role-skills">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Responsive UI</span>
+              <span class="skill-tag">DOM APIs</span>
+            </div>
+            <div class="role-footer">
+              <button class="btn btn-outline btn-full apply-role-trigger" data-role="Web Development">
+                <span>Apply for this Role</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Role 3: Graphic Design -->
+          <div class="role-card reveal-item" data-category="design" data-role-id="graphicdesign">
+            <div class="role-card-header">
+              <div class="role-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                  <path d="M2 2l7.586 7.586"></path>
+                  <circle cx="11" cy="11" r="2"></circle>
+                </svg>
+              </div>
+              <span class="role-badge">Design</span>
+            </div>
+            <h3 class="role-title">Graphic Design</h3>
+            <p class="role-desc">
+              Create high-impact visual identity assets, digital banners, marketing collateral, illustrations, and typography-driven compositions.
+            </p>
+            <div class="role-skills">
+              <span class="skill-tag">Photoshop</span>
+              <span class="skill-tag">Illustrator</span>
+              <span class="skill-tag">Visual Identity</span>
+              <span class="skill-tag">Typography</span>
+              <span class="skill-tag">Creatives</span>
+            </div>
+            <div class="role-footer">
+              <button class="btn btn-outline btn-full apply-role-trigger" data-role="Graphic Design">
+                <span>Apply for this Role</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Role 4: UI/UX Design -->
+          <div class="role-card reveal-item" data-category="design" data-role-id="uiux">
+            <div class="role-card-header">
+              <div class="role-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"></path>
+                  <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"></path>
+                  <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"></path>
+                  <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"></path>
+                  <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"></path>
+                </svg>
+              </div>
+              <span class="role-badge">Design</span>
+            </div>
+            <h3 class="role-title">UI/UX Design</h3>
+            <p class="role-desc">
+              Design intuitive user journeys, interactive wireframes, accessible component libraries, and polished product mockups in Figma.
+            </p>
+            <div class="role-skills">
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Wireframing</span>
+              <span class="skill-tag">Design Systems</span>
+              <span class="skill-tag">User Flow</span>
+              <span class="skill-tag">Prototyping</span>
+            </div>
+            <div class="role-footer">
+              <button class="btn btn-outline btn-full apply-role-trigger" data-role="UI/UX Design">
+                <span>Apply for this Role</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Role 5: Marketing & Business Development -->
+          <div class="role-card reveal-item" data-category="growth" data-role-id="marketing">
+            <div class="role-card-header">
+              <div class="role-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+              </div>
+              <span class="role-badge">Growth & Strategy</span>
+            </div>
+            <h3 class="role-title">Marketing & Business Development</h3>
+            <p class="role-desc">
+              Plan and execute outreach campaigns, market research, content distribution strategies, and partnership communications.
+            </p>
+            <div class="role-skills">
+              <span class="skill-tag">Growth Outreach</span>
+              <span class="skill-tag">Market Research</span>
+              <span class="skill-tag">Content Strategy</span>
+              <span class="skill-tag">Campaigns</span>
+              <span class="skill-tag">Analytics</span>
+            </div>
+            <div class="role-footer">
+              <button class="btn btn-outline btn-full apply-role-trigger" data-role="Marketing & Business Development">
+                <span>Apply for this Role</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Role 6: Video Editing -->
+          <div class="role-card reveal-item" data-category="growth" data-role-id="videoediting">
+            <div class="role-card-header">
+              <div class="role-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+              </div>
+              <span class="role-badge">Growth & Media</span>
+            </div>
+            <h3 class="role-title">Video Editing</h3>
+            <p class="role-desc">
+              Produce engaging video reels, tutorial walkthroughs, dynamic motion graphics, and clean audio edits for modern digital platforms.
+            </p>
+            <div class="role-skills">
+              <span class="skill-tag">Premiere Pro</span>
+              <span class="skill-tag">After Effects</span>
+              <span class="skill-tag">Motion Graphics</span>
+              <span class="skill-tag">Sound Design</span>
+              <span class="skill-tag">Storyboarding</span>
+            </div>
+            <div class="role-footer">
+              <button class="btn btn-outline btn-full apply-role-trigger" data-role="Video Editing">
+                <span>Apply for this Role</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Join Us Section -->
+    <section class="section why-join-section" id="why-join">
+      <div class="container">
+        <div class="section-header text-center reveal-item">
+          <span class="section-tag">Key Benefits</span>
+          <h2 class="section-title">Why Join <span class="text-gradient">ForgeYantra?</span></h2>
+          <p class="section-subtitle">
+            We focus on creating an environment where ambitious students can develop genuine capabilities and stand out in the tech ecosystem.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <!-- Benefit 1 -->
+          <div class="benefit-card reveal-item">
+            <div class="benefit-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <h3 class="benefit-title">Real-World Projects</h3>
+            <p class="benefit-desc">
+              Tackle structured project briefs that emulate authentic industry constraints, requirements, and feature deliverables.
+            </p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="benefit-card reveal-item">
+            <div class="benefit-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <h3 class="benefit-title">Practical Skill Development</h3>
+            <p class="benefit-desc">
+              Move beyond basic textbook knowledge by mastering modern frameworks, version control, and production-grade tools.
+            </p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="benefit-card reveal-item">
+            <div class="benefit-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="benefit-title">Mentorship & Guidance</h3>
+            <p class="benefit-desc">
+              Receive actionable feedback, code reviews, and structured checkpoints to continually level up your skills.
+            </p>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="benefit-card reveal-item">
+            <div class="benefit-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <h3 class="benefit-title">Industry Exposure</h3>
+            <p class="benefit-desc">
+              Gain familiarity with standard development lifecycles, sprint reviews, documentation, and team collaboration.
+            </p>
+          </div>
+
+          <!-- Benefit 5 -->
+          <div class="benefit-card reveal-item">
+            <div class="benefit-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <h3 class="benefit-title">Portfolio Building</h3>
+            <p class="benefit-desc">
+              Graduate with tangible GitHub repositories, live deployments, or design case studies that impress hiring managers.
+            </p>
+          </div>
+
+          <!-- Benefit 6 -->
+          <div class="benefit-card reveal-item">
+            <div class="benefit-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="benefit-title">Career Growth</h3>
+            <p class="benefit-desc">
+              Accelerate your journey into full-time technical and creative careers through confidence, practical mastery, and discipline.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Internship Process Section -->
+    <section class="section process-section" id="process">
+      <div class="container">
+        <div class="section-header text-center reveal-item">
+          <span class="section-tag">How It Works</span>
+          <h2 class="section-title">A Simple 4-Step <span class="text-gradient">Internship Process</span></h2>
+          <p class="section-subtitle">
+            Our straightforward selection and onboarding workflow gets you started on your learning journey without unnecessary friction.
+          </p>
+        </div>
+
+        <div class="process-timeline">
+          <!-- Step 1 -->
+          <div class="process-step reveal-item">
+            <div class="step-badge">1</div>
+            <div class="step-content">
+              <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </div>
+              <h3 class="step-title">Apply</h3>
+              <p class="step-desc">
+                Submit your application, select your preferred internship domain, and share your background and portfolio links.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="process-step reveal-item">
+            <div class="step-badge">2</div>
+            <div class="step-content">
+              <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 11 12 14 22 4"></polyline>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+              </div>
+              <h3 class="step-title">Complete Task</h3>
+              <p class="step-desc">
+                Receive a practical, domain-specific task designed to evaluate your problem-solving approach and baseline skills.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="process-step reveal-item">
+            <div class="step-badge">3</div>
+            <div class="step-content">
+              <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <h3 class="step-title">Interview</h3>
+              <p class="step-desc">
+                Participate in a brief discussion regarding your task submission, learning goals, and domain interests.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="process-step reveal-item">
+            <div class="step-badge">4</div>
+            <div class="step-content">
+              <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+              <h3 class="step-title">Start Internship</h3>
+              <p class="step-desc">
+                Onboard into your cohort, receive your project milestones, and begin building hands-on with mentor guidance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Banner Section -->
+    <section class="section cta-section" id="cta">
+      <div class="container">
+        <div class="cta-card reveal-item">
+          <div class="cta-ambient-glow" aria-hidden="true"></div>
+          <div class="cta-content">
+            <h2 class="cta-title">Ready to Start Your Journey?</h2>
+            <p class="cta-subtitle">
+              Take the next step toward building your skills and gaining real-world experience.
+            </p>
+            <div class="cta-buttons">
+              <a href="#contact" class="btn btn-primary btn-large">
+                <span>Apply Now</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#roles" class="btn btn-secondary btn-large">Explore Open Roles</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Application Form Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center reveal-item">
+          <span class="section-tag">Get in Touch</span>
+          <h2 class="section-title">Internship Application & <span class="text-gradient">Contact Form</span></h2>
+          <p class="section-subtitle">
+            Submit your information below to express your interest in ForgeYantra internship opportunities.
+          </p>
+        </div>
+
+        <div class="contact-wrapper reveal-item">
+          <!-- Application Form -->
+          <form id="internshipForm" class="contact-form" novalidate>
+            <div class="form-grid">
+              <!-- Full Name Field -->
+              <div class="form-group">
+                <label for="fullName" class="form-label">Full Name <span class="required-star">*</span></label>
+                <div class="input-wrapper">
+                  <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  <input type="text" id="fullName" name="fullName" class="form-input" placeholder="e.g. John Doe" required autocomplete="name">
+                </div>
+                <span class="error-msg" id="fullNameError" aria-live="polite"></span>
+              </div>
+
+              <!-- Email Field -->
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address <span class="required-star">*</span></label>
+                <div class="input-wrapper">
+                  <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="e.g. name@example.com" required autocomplete="email">
+                </div>
+                <span class="error-msg" id="emailError" aria-live="polite"></span>
+              </div>
+
+              <!-- Phone Number Field -->
+              <div class="form-group">
+                <label for="phone" class="form-label">Phone Number <span class="required-star">*</span></label>
+                <div class="input-wrapper">
+                  <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <input type="tel" id="phone" name="phone" class="form-input" placeholder="e.g. +91 98765 43210" required autocomplete="tel">
+                </div>
+                <span class="error-msg" id="phoneError" aria-live="polite"></span>
+              </div>
+
+              <!-- Internship Role Field -->
+              <div class="form-group">
+                <label for="roleSelect" class="form-label">Select Internship Role <span class="required-star">*</span></label>
+                <div class="input-wrapper">
+                  <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                  <select id="roleSelect" name="roleSelect" class="form-select" required>
+                    <option value="" disabled selected>-- Choose an internship track --</option>
+                    <option value="Full Stack Development">Full Stack Development</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="UI/UX Design">UI/UX Design</option>
+                    <option value="Marketing & Business Development">Marketing & Business Development</option>
+                    <option value="Video Editing">Video Editing</option>
+                  </select>
+                </div>
+                <span class="error-msg" id="roleError" aria-live="polite"></span>
+              </div>
+
+              <!-- Portfolio / GitHub Link (Optional) -->
+              <div class="form-group full-width">
+                <label for="portfolio" class="form-label">Portfolio / GitHub Profile URL <span class="optional-tag">(Optional)</span></label>
+                <div class="input-wrapper">
+                  <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                  <input type="url" id="portfolio" name="portfolio" class="form-input" placeholder="https://github.com/yourprofile or https://yourportfolio.com">
+                </div>
+                <span class="error-msg" id="portfolioError" aria-live="polite"></span>
+              </div>
+
+              <!-- Message Field -->
+              <div class="form-group full-width">
+                <label for="message" class="form-label">Message / Cover Note <span class="required-star">*</span></label>
+                <div class="input-wrapper textarea-wrapper">
+                  <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Briefly describe your background, current college/year, and what you hope to learn during this internship..." required></textarea>
+                </div>
+                <span class="error-msg" id="messageError" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" id="submitBtn" class="btn btn-primary btn-large btn-submit">
+                <span class="btn-text">Submit Application</span>
+                <span class="btn-spinner" aria-hidden="true"></span>
+                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </div>
+          </form>
+
+          <!-- Submission Success Notification Card (Hidden by default) -->
+          <div id="formSuccessMessage" class="form-success-card" role="alert" aria-hidden="true">
+            <div class="success-icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3 class="success-title">Application Submitted Successfully!</h3>
+            <p class="success-desc">
+              Thank you, <strong id="successApplicantName">Applicant</strong>! Your application for the <strong id="successApplicantRole">Internship</strong> track has been received.
+            </p>
+            <p class="success-note">
+              Our team reviews applications on a rolling basis. Qualified candidates will receive next steps and task guidelines via email.
+            </p>
+            <button type="button" id="resetFormBtn" class="btn btn-secondary">Submit Another Response</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand & Bio -->
+        <div class="footer-col footer-brand-col">
+          <a href="#home" class="brand-logo footer-logo" aria-label="ForgeYantra Home">
+            <span class="logo-icon-wrapper">
+              <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="10" fill="currentColor" class="logo-bg" />
+                <path d="M10 10H30L26 16H16V20H27L23 26H16V30H10V10Z" fill="url(#footerLogoGrad)" />
+                <circle cx="28" cy="28" r="3" fill="#38BDF8" />
+                <defs>
+                  <linearGradient id="footerLogoGrad" x1="10" y1="10" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#38BDF8"/>
+                    <stop offset="1" stop-color="#6366F1"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <span class="logo-text">Forge<span class="text-gradient">Yantra</span></span>
+          </a>
+          <p class="footer-bio">
+            ForgeYantra provides structured, student-focused internship programs designed to build practical technical competence and launch careers.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="GitHub Profile (Placeholder)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="LinkedIn Profile (Placeholder)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home" class="footer-link">Home</a></li>
+            <li><a href="#about" class="footer-link">About Platform</a></li>
+            <li><a href="#roles" class="footer-link">Internship Roles</a></li>
+            <li><a href="#why-join" class="footer-link">Why Join Us</a></li>
+            <li><a href="#process" class="footer-link">4-Step Process</a></li>
+            <li><a href="#contact" class="footer-link">Apply Now</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Internship Roles -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Open Tracks</h4>
+          <ul class="footer-links-list">
+            <li><a href="#roles" class="footer-link">Full Stack Development</a></li>
+            <li><a href="#roles" class="footer-link">Web Development</a></li>
+            <li><a href="#roles" class="footer-link">Graphic Design</a></li>
+            <li><a href="#roles" class="footer-link">UI/UX Design</a></li>
+            <li><a href="#roles" class="footer-link">Marketing & BD</a></li>
+            <li><a href="#roles" class="footer-link">Video Editing</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact & Inquiries -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Inquiries</h4>
+          <ul class="footer-contact-info">
+            <li class="contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>contact@forgeyantra.example</span>
+            </li>
+            <li class="contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Response within 48 business hours</span>
+            </li>
+            <li class="contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Remote / Online Cohorts</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Sub-bar -->
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; 2026 <strong>ForgeYantra</strong>. All rights reserved.
+        </p>
+        <p class="disclaimer-text">
+          Empowering students through hands-on technical internships.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Floating Button -->
+  <button id="backToTop" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
