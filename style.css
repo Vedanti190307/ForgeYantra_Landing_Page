@@ -73,14 +73,18 @@ body[data-theme="dark"] {
 }
 
 /* Light Theme Variables */
+:root[data-theme="light"],
 [data-theme="light"],
 html[data-theme="light"],
-body[data-theme="light"] {
+body[data-theme="light"],
+.light-mode,
+html.light-mode,
+body.light-mode {
   --bg-primary: #F8FAFC;
   --bg-secondary: #FFFFFF;
   --bg-tertiary: #F1F5F9;
-  --bg-glass: rgba(255, 255, 255, 0.92);
-  --bg-glass-card: rgba(255, 255, 255, 0.95);
+  --bg-glass: rgba(255, 255, 255, 0.94);
+  --bg-glass-card: rgba(255, 255, 255, 0.98);
   --bg-glass-input: #FFFFFF;
 
   --text-primary: #0F172A;
@@ -100,15 +104,52 @@ body[data-theme="light"] {
   --grad-glow: radial-gradient(circle, rgba(2, 132, 199, 0.12) 0%, rgba(79, 70, 229, 0.04) 50%, transparent 70%);
 
   --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-card: rgba(0, 0, 0, 0.1);
-  --border-hover: rgba(79, 70, 229, 0.35);
+  --border-card: rgba(0, 0, 0, 0.12);
+  --border-hover: rgba(79, 70, 229, 0.4);
   --border-focus: #4F46E5;
 
-  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 10px 25px -4px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 20px 40px -8px rgba(15, 23, 42, 0.12);
   --shadow-glow: 0 0 25px rgba(79, 70, 229, 0.18);
-  --shadow-card-hover: 0 12px 30px -4px rgba(79, 70, 229, 0.12);
+  --shadow-card-hover: 0 12px 30px -4px rgba(79, 70, 229, 0.15);
+}
+
+/* Explicit Bright Theme Overrides for 100% Guaranteed Contrast */
+[data-theme="light"] body,
+body.light-mode {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .about-card,
+[data-theme="light"] .pillar-card,
+[data-theme="light"] .role-card,
+[data-theme="light"] .benefit-card,
+[data-theme="light"] .step-content,
+[data-theme="light"] .contact-wrapper,
+[data-theme="light"] .site-footer {
+  background: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .about-feature {
+  background: #F8FAFC !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .form-input,
+[data-theme="light"] .form-select,
+[data-theme="light"] .form-textarea {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: rgba(0, 0, 0, 0.18) !important;
+}
+
+[data-theme="light"] .cta-card {
+  background: linear-gradient(135deg, #EEF2FF 0%, #E0F2FE 100%) !important;
+  border-color: rgba(79, 70, 229, 0.25) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -439,6 +480,7 @@ button {
 .theme-icon {
   width: 20px;
   height: 20px;
+  pointer-events: none;
   transition: transform var(--transition-normal);
 }
 

@@ -25,8 +25,20 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Immediate Theme Loader to prevent flash and guarantee theme sync -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('forgeyantra_theme');
+        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.classList.add(theme + '-mode');
+      } catch (e) {}
+    })();
+  </script>
 </head>
-<body>
+<body class="dark-mode">
   <!-- Header / Navigation Bar -->
   <header class="site-header" id="navbar">
     <div class="container header-container">
@@ -63,7 +75,7 @@
       <!-- Header Action Controls (Theme Toggle & CTA) -->
       <div class="header-actions">
         <!-- Theme Toggle Button -->
-        <button id="themeToggle" class="btn-theme-toggle" aria-label="Toggle light or dark theme" title="Toggle theme">
+        <button id="themeToggle" class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle light or dark theme" title="Toggle theme">
           <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -109,7 +121,7 @@
       <div class="mobile-drawer-footer">
         <div class="mobile-theme-row">
           <span>Theme Mode</span>
-          <button class="btn-theme-toggle mobile-theme-btn" aria-label="Toggle theme" title="Toggle theme">
+          <button class="btn-theme-toggle mobile-theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle theme">
             <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>

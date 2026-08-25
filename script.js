@@ -1,63 +1,71 @@
-/**
- * ForgeYantra - Modern Internship Platform Landing Page
- * Pure Vanilla JavaScript
- * Features: Dark/Light Theme (localStorage), Mobile Drawer Menu,
- * Smooth Scroll Navigation, Role Domain Filter, Auto-Fill Role CTA,
- * Robust Client Form Validation & Instant UI Feedback.
- */
+/* ==========================================================================
+   1. Theme Management (Dark / Light Mode)
+   ========================================================================== */
+const STORAGE_KEY = 'forgeyantra_theme';
+
+function getStoredTheme() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === 'light' || saved === 'dark') return saved;
+  } catch (e) {}
+
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+    return 'light';
+  }
+  return 'dark';
+}
+
+function applyTheme(theme) {
+  const targetTheme = (theme === 'light') ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', targetTheme);
+  document.documentElement.classList.remove('dark-mode', 'light-mode');
+  document.documentElement.classList.add(targetTheme + '-mode');
+
+  if (document.body) {
+    document.body.setAttribute('data-theme', targetTheme);
+    document.body.classList.remove('dark-mode', 'light-mode');
+    document.body.classList.add(targetTheme + '-mode');
+  }
+
+  try {
+    localStorage.setItem(STORAGE_KEY, targetTheme);
+  } catch (e) {}
+
+  const label = `Switch to ${targetTheme === 'dark' ? 'light' : 'dark'} mode`;
+  const buttons = document.querySelectorAll('.btn-theme-toggle');
+  buttons.forEach((btn) => {
+    btn.setAttribute('aria-label', label);
+    btn.setAttribute('title', label);
+  });
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+}
+
+// Expose globally for inline onclick support
+window.toggleTheme = toggleTheme;
+window.applyTheme = applyTheme;
+
+// Apply initial theme immediately
+applyTheme(getStoredTheme());
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
-  // Mark document as JS ready for smooth progressive animations
+  // Mark document as JS ready
   document.documentElement.classList.add('js-ready');
 
-  /* ==========================================================================
-     1. Theme Management (Dark / Light Mode)
-     ========================================================================== */
-  const themeToggleBtns = document.querySelectorAll('.btn-theme-toggle');
-  const STORAGE_KEY = 'forgeyantra_theme';
+  // Re-sync theme buttons once DOM is fully ready
+  applyTheme(getStoredTheme());
 
-  function getInitialTheme() {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved === 'light' || saved === 'dark') return saved;
-    } catch (e) {}
-
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      return 'light';
-    }
-    return 'dark';
-  }
-
-  function applyTheme(theme) {
-    const targetTheme = (theme === 'light') ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', targetTheme);
-    if (document.body) {
-      document.body.setAttribute('data-theme', targetTheme);
-    }
-    try {
-      localStorage.setItem(STORAGE_KEY, targetTheme);
-    } catch (e) {}
-
-    const label = `Switch to ${targetTheme === 'dark' ? 'light' : 'dark'} mode`;
-    themeToggleBtns.forEach((btn) => {
-      btn.setAttribute('aria-label', label);
-      btn.setAttribute('title', label);
-    });
-  }
-
-  // Initialize theme on load
-  const initialTheme = getInitialTheme();
-  applyTheme(initialTheme);
-
-  // Attach click listener to all theme buttons (desktop + mobile drawer)
-  themeToggleBtns.forEach((btn) => {
+  const themeButtons = document.querySelectorAll('.btn-theme-toggle');
+  themeButtons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
-      const next = current === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
+      toggleTheme();
     });
   });
 
