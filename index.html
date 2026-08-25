@@ -26,19 +26,19 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Immediate Theme Loader to prevent flash and guarantee theme sync -->
+  <!-- Immediate Theme Loader to guarantee identical theme sync across local & deployed environments -->
   <script>
     (function() {
       try {
         var saved = localStorage.getItem('forgeyantra_theme');
-        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        var theme = (saved === 'light' || saved === 'dark') ? saved : 'dark';
         document.documentElement.setAttribute('data-theme', theme);
-        document.documentElement.classList.add(theme + '-mode');
+        document.documentElement.className = theme + '-mode';
       } catch (e) {}
     })();
   </script>
 </head>
-<body class="dark-mode">
+<body>
   <!-- Header / Navigation Bar -->
   <header class="site-header" id="navbar">
     <div class="container header-container">
