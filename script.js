@@ -1,90 +1,110 @@
 /**
- * ForgeYantra - Modern Internship Platform Landing Page
- * Vanilla JavaScript Implementation
- * Features: Dark/Light Mode, Mobile Navigation, Scroll Reveal,
- * Domain Filtering, Role Auto-Select, Frontend Form Validation & UX.
+ * ForgeYantra - Modern Internship Platform
+ * Vanilla JavaScript
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  'use strict';
+document.addEventListener("DOMContentLoaded", () => {
+  "use strict";
 
-  /* ==========================================================================
-     1. Theme Management (Dark / Light Mode)
-     ========================================================================== */
-  const themeToggleBtn = document.getElementById('themeToggle');
-  const STORAGE_KEY = 'forgeyantra_theme';
+  /* =========================================================
+     1. THEME MANAGEMENT
+  ========================================================= */
 
-  // Determine initial theme: localStorage -> prefers-color-scheme -> default 'dark'
+  const themeToggleBtn = document.getElementById("themeToggle");
+  const STORAGE_KEY = "forgeyantra_theme";
+
   function getInitialTheme() {
     const savedTheme = localStorage.getItem(STORAGE_KEY);
-    if (savedTheme === 'light' || savedTheme === 'dark') {
+
+    if (savedTheme === "light" || savedTheme === "dark") {
       return savedTheme;
     }
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      return 'light';
+
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: light)").matches
+    ) {
+      return "light";
     }
-    return 'dark';
+
+    return "dark";
   }
 
   function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem(STORAGE_KEY, theme);
+
     if (themeToggleBtn) {
-      themeToggleBtn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
-      themeToggleBtn.setAttribute('title', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+      const nextTheme = theme === "dark" ? "light" : "dark";
+
+      themeToggleBtn.setAttribute(
+        "aria-label",
+        `Switch to ${nextTheme} mode`
+      );
+
+      themeToggleBtn.setAttribute(
+        "title",
+        `Switch to ${nextTheme} mode`
+      );
     }
   }
 
-  // Initialize theme on load
-  const currentTheme = getInitialTheme();
-  applyTheme(currentTheme);
+  applyTheme(getInitialTheme());
 
   if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-      const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+    themeToggleBtn.addEventListener("click", () => {
+      const currentTheme =
+        document.documentElement.getAttribute("data-theme") || "dark";
+
+      const nextTheme =
+        currentTheme === "dark" ? "light" : "dark";
+
       applyTheme(nextTheme);
     });
   }
 
-  // Listen for OS system theme changes
-  if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem(STORAGE_KEY)) {
-        applyTheme(e.matches ? 'dark' : 'light');
-      }
-    });
-  }
+  /* =========================================================
+     2. MOBILE NAVIGATION
+  ========================================================= */
 
-  /* ==========================================================================
-     2. Mobile Navigation Drawer & Hamburger
-     ========================================================================== */
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileDrawer = document.getElementById('mobileDrawer');
-  const drawerBackdrop = document.getElementById('drawerBackdrop');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-cta');
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const mobileDrawer = document.getElementById("mobileDrawer");
+  const drawerBackdrop = document.getElementById("drawerBackdrop");
+
+  const mobileNavLinks = document.querySelectorAll(
+    ".mobile-nav-link, .mobile-cta"
+  );
 
   function openMobileMenu() {
     if (!mobileDrawer || !hamburgerBtn) return;
-    mobileDrawer.classList.add('open');
-    mobileDrawer.setAttribute('aria-hidden', 'false');
-    hamburgerBtn.classList.add('active');
-    hamburgerBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+    mobileDrawer.classList.add("open");
+    mobileDrawer.setAttribute("aria-hidden", "false");
+
+    hamburgerBtn.classList.add("active");
+    hamburgerBtn.setAttribute("aria-expanded", "true");
+
+    document.body.style.overflow = "hidden";
   }
 
   function closeMobileMenu() {
     if (!mobileDrawer || !hamburgerBtn) return;
-    mobileDrawer.classList.remove('open');
-    mobileDrawer.setAttribute('aria-hidden', 'true');
-    hamburgerBtn.classList.remove('active');
-    hamburgerBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+
+    mobileDrawer.classList.remove("open");
+    mobileDrawer.setAttribute("aria-hidden", "true");
+
+    hamburgerBtn.classList.remove("active");
+    hamburgerBtn.setAttribute("aria-expanded", "false");
+
+    document.body.style.overflow = "";
   }
 
   if (hamburgerBtn) {
-    hamburgerBtn.addEventListener('click', () => {
-      const isOpen = mobileDrawer && mobileDrawer.classList.contains('open');
+    hamburgerBtn.addEventListener("click", () => {
+      const isOpen =
+        mobileDrawer &&
+        mobileDrawer.classList.contains("open");
+
       if (isOpen) {
         closeMobileMenu();
       } else {
@@ -94,136 +114,186 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (drawerBackdrop) {
-    drawerBackdrop.addEventListener('click', closeMobileMenu);
+    drawerBackdrop.addEventListener("click", closeMobileMenu);
   }
 
-  // Close drawer when clicking any link
   mobileNavLinks.forEach((link) => {
-    link.addEventListener('click', closeMobileMenu);
+    link.addEventListener("click", closeMobileMenu);
   });
 
-  // Close drawer on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('open')) {
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      mobileDrawer &&
+      mobileDrawer.classList.contains("open")
+    ) {
       closeMobileMenu();
     }
   });
 
-  /* ==========================================================================
-     3. Active Navigation Link Highlighting on Scroll
-     ========================================================================== */
-  const sections = document.querySelectorAll('section[id], header[id]');
-  const navLinks = document.querySelectorAll('.nav-desktop .nav-link');
+  /* =========================================================
+     3. ACTIVE NAVIGATION
+  ========================================================= */
+
+  const sections = document.querySelectorAll(
+    "section[id], header[id]"
+  );
+
+  const navLinks = document.querySelectorAll(
+    ".nav-desktop .nav-link"
+  );
 
   function updateActiveNavLink() {
-    const scrollY = window.scrollY + 120; // Offset for header
+    const scrollPosition = window.scrollY + 120;
 
     sections.forEach((section) => {
-      const sectionHeight = section.offsetHeight;
       const sectionTop = section.offsetTop;
-      const sectionId = section.getAttribute('id');
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute("id");
 
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionTop + sectionHeight
+      ) {
         navLinks.forEach((link) => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('active');
+          link.classList.remove("active");
+
+          if (
+            link.getAttribute("href") === `#${sectionId}`
+          ) {
+            link.classList.add("active");
           }
         });
       }
     });
   }
 
-  window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+  window.addEventListener(
+    "scroll",
+    updateActiveNavLink,
+    { passive: true }
+  );
 
-  /* ==========================================================================
-     4. Scroll Reveal Animations (IntersectionObserver)
-     ========================================================================== */
-  const revealElements = document.querySelectorAll('.reveal-item');
+  updateActiveNavLink();
 
-  if ('IntersectionObserver' in window) {
+  /* =========================================================
+     4. SCROLL REVEAL
+  ========================================================= */
+
+  const revealElements =
+    document.querySelectorAll(".reveal-item");
+
+  if ("IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target); // Reveal once
+            entry.target.classList.add("revealed");
+
+            observer.unobserve(entry.target);
           }
         });
       },
       {
         root: null,
         threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px'
+        rootMargin: "0px 0px -40px 0px"
       }
     );
 
-    revealElements.forEach((el) => revealObserver.observe(el));
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
   } else {
-    // Fallback if IntersectionObserver is not supported
-    revealElements.forEach((el) => el.classList.add('revealed'));
+    revealElements.forEach((element) => {
+      element.classList.add("revealed");
+    });
   }
 
-  /* ==========================================================================
-     5. Internship Roles Category Filtering
-     ========================================================================== */
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const roleCards = document.querySelectorAll('.role-card');
+  /* =========================================================
+     5. INTERNSHIP ROLE FILTER
+  ========================================================= */
 
-  filterButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      // Update button active state
-      filterButtons.forEach((b) => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
+  const filterButtons =
+    document.querySelectorAll(".filter-btn");
+
+  const roleCards =
+    document.querySelectorAll(".role-card");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach((btn) => {
+        btn.classList.remove("active");
+        btn.setAttribute("aria-selected", "false");
       });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
 
-      const filterValue = btn.getAttribute('data-filter');
+      button.classList.add("active");
+      button.setAttribute("aria-selected", "true");
+
+      const filterValue =
+        button.getAttribute("data-filter");
 
       roleCards.forEach((card) => {
-        const category = card.getAttribute('data-category');
-        if (filterValue === 'all' || category === filterValue) {
-          card.classList.remove('hide');
-          // Trigger a micro-fade animation
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(12px)';
+        const category =
+          card.getAttribute("data-category");
+
+        if (
+          filterValue === "all" ||
+          category === filterValue
+        ) {
+          card.classList.remove("hide");
+
+          card.style.opacity = "0";
+          card.style.transform = "translateY(12px)";
+
           setTimeout(() => {
-            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
+            card.style.transition =
+              "opacity 0.4s ease, transform 0.4s ease";
+
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
           }, 30);
         } else {
-          card.classList.add('hide');
+          card.classList.add("hide");
         }
       });
     });
   });
 
-  /* ==========================================================================
-     6. "Apply for this Role" Direct Pre-Selection
-     ========================================================================== */
-  const applyRoleTriggers = document.querySelectorAll('.apply-role-trigger');
-  const roleSelectInput = document.getElementById('roleSelect');
-  const contactSection = document.getElementById('contact');
+  /* =========================================================
+     6. APPLY FOR ROLE
+  ========================================================= */
+
+  const applyRoleTriggers =
+    document.querySelectorAll(".apply-role-trigger");
+
+  const roleSelectInput =
+    document.getElementById("roleSelect");
+
+  const contactSection =
+    document.getElementById("contact");
 
   applyRoleTriggers.forEach((trigger) => {
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      const roleName = trigger.getAttribute('data-role');
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const roleName =
+        trigger.getAttribute("data-role");
 
       if (roleSelectInput && roleName) {
         roleSelectInput.value = roleName;
-        // Trigger validation clear on the role field
         validateField(roleSelectInput);
       }
 
       if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-        // Focus name field after smooth scrolling
+        contactSection.scrollIntoView({
+          behavior: "smooth"
+        });
+
         setTimeout(() => {
-          const fullNameInput = document.getElementById('fullName');
+          const fullNameInput =
+            document.getElementById("fullName");
+
           if (fullNameInput) {
             fullNameInput.focus();
           }
@@ -232,193 +302,396 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ==========================================================================
-     7. Frontend Form Validation & Interactive Submission
-     ========================================================================== */
-  const form = document.getElementById('internshipForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const successCard = document.getElementById('formSuccessMessage');
-  const resetFormBtn = document.getElementById('resetFormBtn');
-  const successApplicantName = document.getElementById('successApplicantName');
-  const successApplicantRole = document.getElementById('successApplicantRole');
+  /* =========================================================
+     7. FORM VALIDATION
+  ========================================================= */
 
-  // Input Elements
-  const fullNameInput = document.getElementById('fullName');
-  const emailInput = document.getElementById('email');
-  const phoneInput = document.getElementById('phone');
-  const messageInput = document.getElementById('message');
-  const portfolioInput = document.getElementById('portfolio');
+  const form =
+    document.getElementById("internshipForm");
 
-  // Validation Rules
-  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const PHONE_REGEX = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]{6,15}$/;
-  const URL_REGEX = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/i;
+  const submitBtn =
+    document.getElementById("submitBtn");
 
-  function setError(inputElement, message) {
-    const group = inputElement.closest('.form-group');
-    const errorSpan = group ? group.querySelector('.error-msg') : null;
-    if (group) group.classList.add('has-error');
-    if (errorSpan) errorSpan.textContent = message;
+  const successCard =
+    document.getElementById("formSuccessMessage");
+
+  const resetFormBtn =
+    document.getElementById("resetFormBtn");
+
+  const successApplicantName =
+    document.getElementById("successApplicantName");
+
+  const successApplicantRole =
+    document.getElementById("successApplicantRole");
+
+  const fullNameInput =
+    document.getElementById("fullName");
+
+  const emailInput =
+    document.getElementById("email");
+
+  const phoneInput =
+    document.getElementById("phone");
+
+  const messageInput =
+    document.getElementById("message");
+
+  const portfolioInput =
+    document.getElementById("portfolio");
+
+  const EMAIL_REGEX =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const PHONE_REGEX =
+    /^[+]?[0-9]{7,15}$/;
+
+  const URL_REGEX =
+    /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/i;
+
+  function setError(input, message) {
+    if (!input) return false;
+
+    const group =
+      input.closest(".form-group");
+
+    const errorMessage =
+      group?.querySelector(".error-msg");
+
+    if (group) {
+      group.classList.add("has-error");
+    }
+
+    if (errorMessage) {
+      errorMessage.textContent = message;
+    }
+
     return false;
   }
 
-  function clearError(inputElement) {
-    const group = inputElement.closest('.form-group');
-    const errorSpan = group ? group.querySelector('.error-msg') : null;
-    if (group) group.classList.remove('has-error');
-    if (errorSpan) errorSpan.textContent = '';
+  function clearError(input) {
+    if (!input) return true;
+
+    const group =
+      input.closest(".form-group");
+
+    const errorMessage =
+      group?.querySelector(".error-msg");
+
+    if (group) {
+      group.classList.remove("has-error");
+    }
+
+    if (errorMessage) {
+      errorMessage.textContent = "";
+    }
+
     return true;
   }
 
-  function validateField(inputElement) {
-    const value = inputElement.value.trim();
+  function validateField(input) {
+    if (!input) return true;
 
-    switch (inputElement.id) {
-      case 'fullName':
-        if (!value) return setError(inputElement, 'Full name is required.');
-        if (value.length < 2) return setError(inputElement, 'Please enter at least 2 characters.');
-        return clearError(inputElement);
+    const value = input.value.trim();
 
-      case 'email':
-        if (!value) return setError(inputElement, 'Email address is required.');
-        if (!EMAIL_REGEX.test(value)) return setError(inputElement, 'Please enter a valid email address.');
-        return clearError(inputElement);
+    switch (input.id) {
+      case "fullName":
 
-      case 'phone':
-        if (!value) return setError(inputElement, 'Phone number is required.');
-        if (!PHONE_REGEX.test(value.replace(/\s+/g, ''))) {
-          return setError(inputElement, 'Please enter a valid phone number (min 7 digits).');
+        if (!value) {
+          return setError(
+            input,
+            "Full name is required."
+          );
         }
-        return clearError(inputElement);
 
-      case 'roleSelect':
-        if (!value) return setError(inputElement, 'Please select an internship track.');
-        return clearError(inputElement);
-
-      case 'message':
-        if (!value) return setError(inputElement, 'Please provide a brief background or cover note.');
-        if (value.length < 10) return setError(inputElement, 'Please write at least 10 characters.');
-        return clearError(inputElement);
-
-      case 'portfolio':
-        if (value && !URL_REGEX.test(value)) {
-          return setError(inputElement, 'Please enter a valid URL (e.g. https://github.com/username).');
+        if (value.length < 2) {
+          return setError(
+            input,
+            "Please enter at least 2 characters."
+          );
         }
-        return clearError(inputElement);
+
+        return clearError(input);
+
+      case "email":
+
+        if (!value) {
+          return setError(
+            input,
+            "Email address is required."
+          );
+        }
+
+        if (!EMAIL_REGEX.test(value)) {
+          return setError(
+            input,
+            "Please enter a valid email address."
+          );
+        }
+
+        return clearError(input);
+
+      case "phone":
+
+        if (!value) {
+          return setError(
+            input,
+            "Phone number is required."
+          );
+        }
+
+        if (
+          !PHONE_REGEX.test(
+            value.replace(/[\s()-]/g, "")
+          )
+        ) {
+          return setError(
+            input,
+            "Please enter a valid phone number."
+          );
+        }
+
+        return clearError(input);
+
+      case "roleSelect":
+
+        if (!value) {
+          return setError(
+            input,
+            "Please select an internship track."
+          );
+        }
+
+        return clearError(input);
+
+      case "message":
+
+        if (!value) {
+          return setError(
+            input,
+            "Please provide a brief background or cover note."
+          );
+        }
+
+        if (value.length < 10) {
+          return setError(
+            input,
+            "Please write at least 10 characters."
+          );
+        }
+
+        return clearError(input);
+
+      case "portfolio":
+
+        if (
+          value &&
+          !URL_REGEX.test(value)
+        ) {
+          return setError(
+            input,
+            "Please enter a valid URL."
+          );
+        }
+
+        return clearError(input);
 
       default:
         return true;
     }
   }
 
-  // Real-time input listeners for instant feedback
-  [fullNameInput, emailInput, phoneInput, roleSelectInput, messageInput, portfolioInput].forEach((input) => {
-    if (input) {
-      input.addEventListener('input', () => {
-        // Clear error as user types
+  const formInputs = [
+    fullNameInput,
+    emailInput,
+    phoneInput,
+    roleSelectInput,
+    messageInput,
+    portfolioInput
+  ];
+
+  formInputs.forEach((input) => {
+    if (!input) return;
+
+    input.addEventListener("input", () => {
+      validateField(input);
+    });
+
+    input.addEventListener("blur", () => {
+      validateField(input);
+    });
+
+    if (input.tagName === "SELECT") {
+      input.addEventListener("change", () => {
         validateField(input);
       });
-      input.addEventListener('blur', () => {
-        validateField(input);
-      });
-      if (input.tagName === 'SELECT') {
-        input.addEventListener('change', () => validateField(input));
-      }
     }
   });
 
-  // Handle Form Submission
+  /* =========================================================
+     8. FORM SUBMISSION
+  ========================================================= */
+
   if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
 
-      // Validate all required fields
-      const isNameValid = validateField(fullNameInput);
-      const isEmailValid = validateField(emailInput);
-      const isPhoneValid = validateField(phoneInput);
-      const isRoleValid = validateField(roleSelectInput);
-      const isMessageValid = validateField(messageInput);
-      const isPortfolioValid = validateField(portfolioInput);
+      const isNameValid =
+        validateField(fullNameInput);
 
-      const isFormValid = isNameValid && isEmailValid && isPhoneValid && isRoleValid && isMessageValid && isPortfolioValid;
+      const isEmailValid =
+        validateField(emailInput);
+
+      const isPhoneValid =
+        validateField(phoneInput);
+
+      const isRoleValid =
+        validateField(roleSelectInput);
+
+      const isMessageValid =
+        validateField(messageInput);
+
+      const isPortfolioValid =
+        validateField(portfolioInput);
+
+      const isFormValid =
+        isNameValid &&
+        isEmailValid &&
+        isPhoneValid &&
+        isRoleValid &&
+        isMessageValid &&
+        isPortfolioValid;
 
       if (!isFormValid) {
-        // Focus first erroneous field
-        const firstErrorField = form.querySelector('.form-group.has-error input, .form-group.has-error select, .form-group.has-error textarea');
-        if (firstErrorField) firstErrorField.focus();
+        const firstError =
+          form.querySelector(
+            ".form-group.has-error input, " +
+            ".form-group.has-error select, " +
+            ".form-group.has-error textarea"
+          );
+
+        if (firstError) {
+          firstError.focus();
+        }
+
         return;
       }
 
-      // Collect applicant name and role for instant UI confirmation display
-      const applicantName = fullNameInput.value.trim();
-      const applicantRole = roleSelectInput.value;
+      const applicantName =
+        fullNameInput.value.trim();
 
-      // Simulate UI submission with loading state (frontend-only, no data stored)
+      const applicantRole =
+        roleSelectInput.value;
+
       if (submitBtn) {
-        submitBtn.classList.add('loading');
+        submitBtn.classList.add("loading");
         submitBtn.disabled = true;
       }
 
       setTimeout(() => {
-        // Stop loading spinner
         if (submitBtn) {
-          submitBtn.classList.remove('loading');
+          submitBtn.classList.remove("loading");
           submitBtn.disabled = false;
         }
 
-        // Hide form and show success card
-        form.style.display = 'none';
+        form.style.display = "none";
+
         if (successCard) {
-          if (successApplicantName) successApplicantName.textContent = applicantName;
-          if (successApplicantRole) successApplicantRole.textContent = applicantRole;
-          successCard.classList.add('active');
-          successCard.setAttribute('aria-hidden', 'false');
-          successCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          if (successApplicantName) {
+            successApplicantName.textContent =
+              applicantName;
+          }
+
+          if (successApplicantRole) {
+            successApplicantRole.textContent =
+              applicantRole;
+          }
+
+          successCard.classList.add("active");
+          successCard.setAttribute(
+            "aria-hidden",
+            "false"
+          );
+
+          successCard.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+          });
         }
       }, 1200);
     });
   }
 
-  // Handle Reset Form / Submit Another
+  /* =========================================================
+     9. RESET FORM
+  ========================================================= */
+
   if (resetFormBtn) {
-    resetFormBtn.addEventListener('click', () => {
+    resetFormBtn.addEventListener("click", () => {
       if (form) {
         form.reset();
-        form.style.display = 'block';
-        // Clear any leftover error styling
-        document.querySelectorAll('.form-group').forEach((grp) => grp.classList.remove('has-error'));
-        document.querySelectorAll('.error-msg').forEach((msg) => (msg.textContent = ''));
+        form.style.display = "block";
+
+        document
+          .querySelectorAll(".form-group")
+          .forEach((group) => {
+            group.classList.remove("has-error");
+          });
+
+        document
+          .querySelectorAll(".error-msg")
+          .forEach((message) => {
+            message.textContent = "";
+          });
       }
+
       if (successCard) {
-        successCard.classList.remove('active');
-        successCard.setAttribute('aria-hidden', 'true');
+        successCard.classList.remove("active");
+
+        successCard.setAttribute(
+          "aria-hidden",
+          "true"
+        );
       }
-      if (fullNameInput) fullNameInput.focus();
+
+      if (fullNameInput) {
+        fullNameInput.focus();
+      }
     });
   }
 
-  /* ==========================================================================
-     8. Back to Top Button
-     ========================================================================== */
-  const backToTopBtn = document.getElementById('backToTop');
+  /* =========================================================
+     10. BACK TO TOP
+  ========================================================= */
+
+  const backToTopBtn =
+    document.getElementById("backToTop");
 
   function toggleBackToTopButton() {
     if (!backToTopBtn) return;
+
     if (window.scrollY > 350) {
-      backToTopBtn.classList.add('visible');
+      backToTopBtn.classList.add("visible");
     } else {
-      backToTopBtn.classList.remove('visible');
+      backToTopBtn.classList.remove("visible");
     }
   }
 
-  window.addEventListener('scroll', toggleBackToTopButton, { passive: true });
+  window.addEventListener(
+    "scroll",
+    toggleBackToTopButton,
+    { passive: true }
+  );
 
   if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => {
+    backToTopBtn.addEventListener("click", () => {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: "smooth"
       });
     });
   }
+
+  /* =========================================================
+     END
+  ========================================================= */
 });
