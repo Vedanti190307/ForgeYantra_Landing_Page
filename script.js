@@ -15,12 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
      1. Theme Management (Dark / Light Mode)
      ========================================================================== */
-  const themeToggleBtn = document.getElementById('themeToggle');
+  const themeToggleBtns = document.querySelectorAll('.btn-theme-toggle');
   const STORAGE_KEY = 'forgeyantra_theme';
 
   function getInitialTheme() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === 'light' || saved === 'dark') return saved;
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === 'light' || saved === 'dark') return saved;
+    } catch (e) {}
+
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
       return 'light';
     }
@@ -28,26 +31,44 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
+    const targetTheme = (theme === 'light') ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', targetTheme);
+    if (document.body) {
+      document.body.setAttribute('data-theme', targetTheme);
+    }
     try {
-      localStorage.setItem(STORAGE_KEY, theme);
-    } catch (e) {
-      // Ignore private browsing quota limits
-    }
-    if (themeToggleBtn) {
-      const label = `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`;
-      themeToggleBtn.setAttribute('aria-label', label);
-      themeToggleBtn.setAttribute('title', label);
-    }
+      localStorage.setItem(STORAGE_KEY, targetTheme);
+    } catch (e) {}
+
+    const label = `Switch to ${targetTheme === 'dark' ? 'light' : 'dark'} mode`;
+    themeToggleBtns.forEach((btn) => {
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+    });
   }
 
-  // Initialize theme
-  applyTheme(getInitialTheme());
+  // Initialize theme on load
+  const initialTheme = getInitialTheme();
+  applyTheme(initialTheme);
 
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
+  // Attach click listener to all theme buttons (desktop + mobile drawer)
+  themeToggleBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
       const current = document.documentElement.getAttribute('data-theme') || 'dark';
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    });
+  });
+
+  // Listen to OS theme changes if user has no saved manual preference
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      try {
+        if (!localStorage.getItem(STORAGE_KEY)) {
+          applyTheme(e.matches ? 'dark' : 'light');
+        }
+      } catch (err) {}
     });
   }
 
