@@ -4,7 +4,7 @@ A modern, responsive, and student-focused internship landing page developed for 
 
 ## 🌐 Live Demo
 
-**Live Website:** `YOUR_VERCEL_URL_HERE`
+**Live Website:** ` https://forge-yantra-landing-page.vercel.app/`
 
 ## ✨ Features
 
@@ -39,34 +39,8 @@ ForgeYantra/
     └── favicon.svg
 ```
 
-## ▶️ Run Locally
-
-### Direct Browser
-
-Open `index.html` in any modern browser.
-
-### VS Code
-
-Open the project in VS Code → Right-click `index.html` → **Open with Live Server**.
-
-### Python Server
-
-```bash
-python -m http.server 3000
-```
-
-Then open:
-
-`http://localhost:3000`
-
-## 📝 Note
-
-This is a **frontend-only project**. The application form performs client-side validation and does not send or store data on a backend.
 
 ## 👩‍💻 Developer
+Vedanti Pawar
 
-**Vedanti Pawar**
-B.Tech — Information Technology
-Sanjivani College of Engineering
-
-GitHub: **Vedanti190307**
+GitHub: https://github.com/Vedanti190307
