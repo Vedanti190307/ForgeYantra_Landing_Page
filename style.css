@@ -514,37 +514,19 @@ html[data-theme="light"] .moon-icon {
   border: 1px solid var(--border-card);
   gap: 5px;
   padding: 8px;
-  z-index: 1100;
+  z-index: 3000;
 }
 
-.hamburger-line {
-  width: 22px;
-  height: 2px;
-  background: var(--text-primary);
-  border-radius: 2px;
-  transition: transform var(--transition-normal), opacity var(--transition-normal);
-}
+/* --------------------------------------------------------------------------
+   FIXED MOBILE DRAWER
+   -------------------------------------------------------------------------- */
 
-.hamburger-btn.active .line-1 {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.hamburger-btn.active .line-2 {
-  opacity: 0;
-}
-
-.hamburger-btn.active .line-3 {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* Mobile Drawer */
 .mobile-drawer {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
-  height: 100vh;
-  z-index: 1050;
+  height: 100dvh;
+  z-index: 2000;
   visibility: hidden;
   pointer-events: none;
   transition: visibility var(--transition-normal);
@@ -555,29 +537,35 @@ html[data-theme="light"] .moon-icon {
   pointer-events: auto;
 }
 
+/* Dark overlay behind the menu.
+   No blur so the page does not become visually distorted. */
 .mobile-drawer-backdrop {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.45);
   opacity: 0;
-  transition: opacity var(--transition-normal);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+  z-index: 2000;
 }
 
 .mobile-drawer.open .mobile-drawer-backdrop {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
+/* Actual menu panel */
 .mobile-drawer-content {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   width: 82%;
   max-width: 320px;
-  height: 100%;
+  height: 100dvh;
   background: var(--bg-secondary);
   border-left: 1px solid var(--border-card);
   padding: calc(var(--nav-height) + 20px) 24px 32px;
@@ -587,6 +575,9 @@ html[data-theme="light"] .moon-icon {
   transform: translateX(100%);
   transition: transform var(--transition-normal);
   box-shadow: var(--shadow-lg);
+  z-index: 2001;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-drawer.open .mobile-drawer-content {
@@ -607,6 +598,8 @@ html[data-theme="light"] .moon-icon {
   padding: 8px 0;
   border-bottom: 1px solid var(--border-subtle);
   transition: color var(--transition-fast), padding-left var(--transition-fast);
+  position: relative;
+  z-index: 2002;
 }
 
 .mobile-nav-link:hover,
@@ -638,6 +631,30 @@ html[data-theme="light"] .moon-icon {
 .mobile-theme-btn {
   width: 38px;
   height: 38px;
+  position: relative;
+  z-index: 2003;
+}
+
+/* Hamburger lines */
+.hamburger-line {
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: transform var(--transition-normal), opacity var(--transition-normal);
+  display: block;
+}
+
+.hamburger-btn.active .line-1 {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-btn.active .line-2 {
+  opacity: 0;
+}
+
+.hamburger-btn.active .line-3 {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* --------------------------------------------------------------------------
@@ -1980,7 +1997,7 @@ html.js-ready .hero-section .reveal-item {
   }
 }
 
-/* Tablets (<= 768px) */
+/* Tablets <= 768px */
 @media (max-width: 768px) {
   :root {
     --nav-height: 70px;
@@ -1998,6 +2015,8 @@ html.js-ready .hero-section .reveal-item {
 
   .hamburger-btn {
     display: flex;
+    position: relative;
+    z-index: 3000;
   }
 
   .hero-section {
@@ -2045,9 +2064,22 @@ html.js-ready .hero-section .reveal-item {
     text-align: center;
     gap: 10px;
   }
+
+  /* Mobile menu stays above everything */
+  .mobile-drawer {
+    z-index: 2000;
+  }
+
+  .mobile-drawer-content {
+    z-index: 2001;
+  }
+
+  .mobile-drawer-backdrop {
+    z-index: 2000;
+  }
 }
 
-/* Mobile Devices (<= 425px & 375px) */
+/* Mobile Devices (<= 425px) */
 @media (max-width: 425px) {
   .container {
     padding-left: 18px;
@@ -2095,5 +2127,12 @@ html.js-ready .hero-section .reveal-item {
     right: 20px;
     width: 42px;
     height: 42px;
+  }
+
+  .mobile-drawer-content {
+    width: 88%;
+    max-width: 340px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
