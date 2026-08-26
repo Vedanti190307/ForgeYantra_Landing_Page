@@ -6,8 +6,9 @@
 /* --------------------------------------------------------------------------
    1. Design Tokens & Theme Variables
    -------------------------------------------------------------------------- */
+
+/* DARK THEME / DEFAULT */
 :root,
-[data-theme="dark"],
 html[data-theme="dark"],
 body[data-theme="dark"] {
   /* Dark Theme Palette (Default) */
@@ -17,7 +18,7 @@ body[data-theme="dark"] {
   --bg-glass: rgba(17, 24, 39, 0.88);
   --bg-glass-card: rgba(30, 41, 59, 0.75);
   --bg-glass-input: rgba(15, 23, 42, 0.75);
-  
+
   --text-primary: #F8FAFC;
   --text-secondary: #94A3B8;
   --text-muted: #64748B;
@@ -29,7 +30,7 @@ body[data-theme="dark"] {
   --accent-blue: #2563EB;
   --accent-purple: #8B5CF6;
   --accent-emerald: #10B981;
-  
+
   /* Gradients */
   --grad-primary: linear-gradient(135deg, #38BDF8 0%, #6366F1 50%, #8B5CF6 100%);
   --grad-accent: linear-gradient(135deg, #0284C7 0%, #4F46E5 100%);
@@ -72,14 +73,9 @@ body[data-theme="dark"] {
   --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Light Theme Variables */
-:root[data-theme="light"],
-[data-theme="light"],
+/* LIGHT THEME */
 html[data-theme="light"],
-body[data-theme="light"],
-.light-mode,
-html.light-mode,
-body.light-mode {
+body[data-theme="light"] {
   --bg-primary: #F8FAFC;
   --bg-secondary: #FFFFFF;
   --bg-tertiary: #F1F5F9;
@@ -115,39 +111,39 @@ body.light-mode {
   --shadow-card-hover: 0 12px 30px -4px rgba(79, 70, 229, 0.15);
 }
 
-/* Explicit Bright Theme Overrides for 100% Guaranteed Contrast */
-[data-theme="light"] body,
-body.light-mode {
+/* Light mode explicit overrides */
+html[data-theme="light"] body,
+body[data-theme="light"] {
   background-color: #F8FAFC !important;
   color: #0F172A !important;
 }
 
-[data-theme="light"] .about-card,
-[data-theme="light"] .pillar-card,
-[data-theme="light"] .role-card,
-[data-theme="light"] .benefit-card,
-[data-theme="light"] .step-content,
-[data-theme="light"] .contact-wrapper,
-[data-theme="light"] .site-footer {
+html[data-theme="light"] .about-card,
+html[data-theme="light"] .pillar-card,
+html[data-theme="light"] .role-card,
+html[data-theme="light"] .benefit-card,
+html[data-theme="light"] .step-content,
+html[data-theme="light"] .contact-wrapper,
+html[data-theme="light"] .site-footer {
   background: #FFFFFF !important;
   border-color: rgba(0, 0, 0, 0.1) !important;
   color: #0F172A !important;
 }
 
-[data-theme="light"] .about-feature {
+html[data-theme="light"] .about-feature {
   background: #F8FAFC !important;
   border-color: rgba(0, 0, 0, 0.08) !important;
 }
 
-[data-theme="light"] .form-input,
-[data-theme="light"] .form-select,
-[data-theme="light"] .form-textarea {
+html[data-theme="light"] .form-input,
+html[data-theme="light"] .form-select,
+html[data-theme="light"] .form-textarea {
   background: #FFFFFF !important;
   color: #0F172A !important;
   border-color: rgba(0, 0, 0, 0.18) !important;
 }
 
-[data-theme="light"] .cta-card {
+html[data-theme="light"] .cta-card {
   background: linear-gradient(135deg, #EEF2FF 0%, #E0F2FE 100%) !important;
   border-color: rgba(79, 70, 229, 0.25) !important;
 }
@@ -180,7 +176,8 @@ body {
   transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-img, svg {
+img,
+svg {
   display: block;
   max-width: 100%;
 }
@@ -195,7 +192,10 @@ ul {
   list-style: none;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: 1rem;
   color: inherit;
@@ -485,21 +485,19 @@ button {
 }
 
 /* Explicit Sun/Moon Icon Visibility by Theme */
-[data-theme="dark"] .sun-icon,
-html:not([data-theme="light"]) .sun-icon {
+html[data-theme="dark"] .sun-icon {
   display: block !important;
 }
 
-[data-theme="dark"] .moon-icon,
-html:not([data-theme="light"]) .moon-icon {
+html[data-theme="dark"] .moon-icon {
   display: none !important;
 }
 
-[data-theme="light"] .sun-icon {
+html[data-theme="light"] .sun-icon {
   display: none !important;
 }
 
-[data-theme="light"] .moon-icon {
+html[data-theme="light"] .moon-icon {
   display: block !important;
 }
 
@@ -611,7 +609,8 @@ html:not([data-theme="light"]) .moon-icon {
   transition: color var(--transition-fast), padding-left var(--transition-fast);
 }
 
-.mobile-nav-link:hover, .mobile-nav-link.active {
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
   color: var(--accent-cyan);
   padding-left: 6px;
 }
@@ -721,8 +720,15 @@ html:not([data-theme="light"]) .moon-icon {
 }
 
 @keyframes pulseDot {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
 }
 
 .hero-title {
@@ -806,7 +812,7 @@ html:not([data-theme="light"]) .moon-icon {
   border-bottom: 1px solid var(--border-subtle);
 }
 
-[data-theme="light"] .tech-window-header {
+html[data-theme="light"] .tech-window-header {
   background: #E2E8F0;
 }
 
@@ -821,9 +827,17 @@ html:not([data-theme="light"]) .moon-icon {
   border-radius: 50%;
 }
 
-.dot-red { background-color: #EF4444; }
-.dot-yellow { background-color: #F59E0B; }
-.dot-green { background-color: #10B981; }
+.dot-red {
+  background-color: #EF4444;
+}
+
+.dot-yellow {
+  background-color: #F59E0B;
+}
+
+.dot-green {
+  background-color: #10B981;
+}
 
 .window-tab {
   display: flex;
@@ -852,7 +866,7 @@ html:not([data-theme="light"]) .moon-icon {
   background: rgba(11, 15, 25, 0.95);
 }
 
-[data-theme="light"] .tech-window-body {
+html[data-theme="light"] .tech-window-body {
   background: #0F172A;
   color: #F8FAFC;
 }
@@ -866,16 +880,41 @@ html:not([data-theme="light"]) .moon-icon {
   min-height: 22px;
 }
 
-.indent-1 { padding-left: 18px; }
-.indent-2 { padding-left: 36px; }
-.indent-3 { padding-left: 54px; }
+.indent-1 {
+  padding-left: 18px;
+}
 
-.code-keyword { color: #F43F5E; }
-.code-variable { color: #38BDF8; }
-.code-string { color: #34D399; }
-.code-function { color: #818CF8; }
-.code-component { color: #FBBF24; }
-.code-prop { color: #93C5FD; }
+.indent-2 {
+  padding-left: 36px;
+}
+
+.indent-3 {
+  padding-left: 54px;
+}
+
+.code-keyword {
+  color: #F43F5E;
+}
+
+.code-variable {
+  color: #38BDF8;
+}
+
+.code-string {
+  color: #34D399;
+}
+
+.code-function {
+  color: #818CF8;
+}
+
+.code-component {
+  color: #FBBF24;
+}
+
+.code-prop {
+  color: #93C5FD;
+}
 
 .tech-status-box {
   display: flex;
@@ -951,8 +990,13 @@ html:not([data-theme="light"]) .moon-icon {
 }
 
 @keyframes floatSlow {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-10px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1630,7 +1674,9 @@ html:not([data-theme="light"]) .moon-icon {
 }
 
 @keyframes spinLoader {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .btn-submit.loading .btn-text,
@@ -1690,8 +1736,15 @@ html:not([data-theme="light"]) .moon-icon {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1802,7 +1855,8 @@ html:not([data-theme="light"]) .moon-icon {
   gap: 14px;
 }
 
-.copyright-text, .disclaimer-text {
+.copyright-text,
+.disclaimer-text {
   font-size: 0.85rem;
   color: var(--text-muted);
 }
@@ -1851,7 +1905,8 @@ html:not([data-theme="light"]) .moon-icon {
 .reveal-item {
   opacity: 1;
   transform: none;
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html.js-ready .reveal-item {
@@ -1865,9 +1920,17 @@ html.js-ready .hero-section .reveal-item {
   transform: translateY(0) !important;
 }
 
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
+.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.delay-3 {
+  transition-delay: 0.3s;
+}
 
 /* --------------------------------------------------------------------------
    16. Responsive Media Queries
@@ -1928,7 +1991,8 @@ html.js-ready .hero-section .reveal-item {
     padding-bottom: 70px;
   }
 
-  .nav-desktop, .nav-cta {
+  .nav-desktop,
+  .nav-cta {
     display: none;
   }
 
@@ -2033,4 +2097,3 @@ html.js-ready .hero-section .reveal-item {
     height: 42px;
   }
 }
- dont change anything just fix dark and bright button it not work just show always light just fix it only
